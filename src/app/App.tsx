@@ -1,90 +1,51 @@
-import { useState } from "react";
-import { HeroLanding } from "./components/HeroLanding";
-import { LanguageSelector } from "./components/LanguageSelector";
-import { LanguageSwitcher } from "./components/LanguageSwitcher";
-import { ContentSelector } from "./components/ContentSelector";
-import { VideoInstructionModal } from "./components/VideoInstructionModal";
-import { Video360Player } from "./components/Video360Player";
-import { LanguageCode } from "./translations";
+import { useState } from 'react';
+import { translations, LanguageCode } from './translations';
+import { Footer } from './components/Footer';
 
-type AppState = "hero" | "language" | "content" | "instruction" | "video";
+// IMPORTANTE: Asegúrate de importar aquí tus otros componentes 
+// (Hero, LanguageSelector, ContentSelector, etc.) según tu estructura real.
 
-export default function App() {
-  const [currentState, setCurrentState] = useState<AppState>("language");
-  const [selectedLanguage, setSelectedLanguage] = useState<LanguageCode>("es");
-  const [selectedContent, setSelectedContent] = useState<string>("");
+function App() {
+  // Estado para el idioma, por defecto en Español
+  const [currentLang, setCurrentLang] = useState<LanguageCode>('es');
 
-  const handleStartExperience = () => {
-    setCurrentState("content");
-  };
-
-  const handleLanguageSelect = (language: string) => {
-    setSelectedLanguage(language as LanguageCode);
-    setCurrentState("hero");
-  };
-
-  const handleLanguageChange = (language: LanguageCode) => {
-    setSelectedLanguage(language);
-  };
-
-  const handleContentSelect = (contentId: string) => {
-    setSelectedContent(contentId);
-    setCurrentState("instruction");
-  };
-
-  const handleInstructionClose = () => {
-    setCurrentState("content");
-  };
-
-  const handleStartVideo = () => {
-    setCurrentState("video");
-  };
-
-  const handleCloseVideo = () => {
-    setCurrentState("content");
+  // Función para cambiar el idioma que puedes pasar a tus otros componentes
+  const handleLanguageChange = (lang: LanguageCode) => {
+    setCurrentLang(lang);
   };
 
   return (
-    <div className="size-full min-h-screen overflow-x-hidden">
-      {currentState !== "language" && (
-        <LanguageSwitcher
-          currentLanguage={selectedLanguage}
-          onLanguageChange={handleLanguageChange}
-        />
-      )}
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      {/* El componente <main> tiene 'flex-grow'. 
+          Esto hace que ocupe todo el espacio disponible y empuje el footer al fondo.
+      */}
+      <main className="flex-grow">
+        
+        {/* AQUÍ VAN TUS COMPONENTES ACTUALES */}
+        {/* Ejemplo (ajusta según tus nombres reales):
+          <Hero lang={currentLang} />
+          <LanguageSelector onSelect={handleLanguageChange} />
+          <ContentSelector lang={currentLang} />
+        */}
+        
+        <div className="p-8 text-center">
+          <h1 className="text-4xl font-bold">{translations[currentLang].hero.title}</h1>
+          <p className="mt-4 text-muted-foreground">{translations[currentLang].hero.subtitle}</p>
+          
+          {/* Botones de prueba para que veas cómo cambia el footer legal al instante */}
+          <div className="mt-8 flex justify-center gap-4">
+            <button onClick={() => setCurrentLang('es')} className="px-4 py-2 bg-blue-600 text-white rounded">ES</button>
+            <button onClick={() => setCurrentLang('en')} className="px-4 py-2 bg-blue-600 text-white rounded">EN</button>
+            <button onClick={() => setCurrentLang('pt')} className="px-4 py-2 bg-blue-600 text-white rounded">PT</button>
+          </div>
+        </div>
 
-      {currentState === "hero" && (
-        <HeroLanding onStart={handleStartExperience} language={selectedLanguage} />
-      )}
+      </main>
 
-      {currentState === "language" && (
-        <LanguageSelector
-          isOpen={true}
-          onSelect={handleLanguageSelect}
-          language={selectedLanguage}
-        />
-      )}
-
-      {currentState === "content" && (
-        <ContentSelector onSelectContent={handleContentSelect} language={selectedLanguage} />
-      )}
-
-      {currentState === "instruction" && (
-        <VideoInstructionModal
-          isOpen={true}
-          onClose={handleInstructionClose}
-          onStart={handleStartVideo}
-          language={selectedLanguage}
-        />
-      )}
-
-      {currentState === "video" && (
-        <Video360Player
-          contentId={selectedContent}
-          onClose={handleCloseVideo}
-          language={selectedLanguage}
-        />
-      )}
+      {/* El Footer siempre al final */}
+      <Footer lang={currentLang} />
     </div>
   );
 }
+
+export default App;

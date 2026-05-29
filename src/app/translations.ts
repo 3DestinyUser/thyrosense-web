@@ -45,6 +45,13 @@ export const translations = {
     },
     videoPlayer: {
       helpText: "Arrastra para explorar 360° • Usa los controles para reproducir"
+    },
+    footer: {
+      code: "RL-NONT-00054, Junio/26",
+      line1: "Este contenido fue diseñado para el público general de los países de habla hispana en América Latina con presencia Merck.",
+      line2: "Las imágenes usadas tienen un propósito meramente ilustrativo y no se encuentran vinculadas a ningún paciente en particular.",
+      address: "Oficina regional ATUSA: ARES TRADING URUGUAY S.A., Zonamericana Ruta 8 Km 17.500, C.P. 91600 Tel: +598 2 5182351, Edificio Merck Serono, Montevideo, Uruguay",
+      rights: "[2026] Merck KGaA || Todos los derechos reservados."
     }
   },
   en: {
@@ -93,6 +100,13 @@ export const translations = {
     },
     videoPlayer: {
       helpText: "Drag to explore 360° • Use controls to play"
+    },
+    footer: {
+      code: "RL-NONT-00053, June/26",
+      line1: "This content was designed for the general audience in countries with Merck presence.",
+      line2: "The presented images are for illustrative purposes only and do not refer to any particular patient.",
+      address: "",
+      rights: "[2026] Merck KGaA || All rights reserved."
     }
   },
   pt: {
@@ -141,6 +155,13 @@ export const translations = {
     },
     videoPlayer: {
       helpText: "Arraste para explorar 360° • Use os controles para reproduzir"
+    },
+    footer: {
+      code: "BR-NONT-00017, Junho/26",
+      line1: "Este conteúdo foi desenvolvido para o público em geral em países com presença da Merck.",
+      line2: "As imagens são somente para fins ilustrativos e não estão vinculadas a nenhum paciente em particular.",
+      address: "Merck no Brasil: Merck S.A. Estrada dos Bandeirantes, 1099, Jacarepaguá – Rio de Janeiro - RJ, CEP 22.710.571, Brasil",
+      rights: "[2026] Merck KGaA || All rights reserved."
     }
   }
 };
