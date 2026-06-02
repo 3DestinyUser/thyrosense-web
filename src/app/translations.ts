@@ -29,13 +29,13 @@ export const translations = {
         title: "La vida de Ximena",
         description: "Conoce una historia humana e inmersiva en formato 360°.",
         youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "/donwloable-video-ph.mp4"
+        downloadLink: "https://drive.google.com/file/d/1GFcwdADC4rV1372-jrTsNexCBtaGBHgT/view?usp=sharing"
       },
       cuerpoHumano: {
         title: "El cuerpo humano",
         description: "Explora el cuerpo humano desde una perspectiva interactiva y educativa.",
         youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "/donwloable-video-ph.mp4"
+        downloadLink: "https://drive.google.com/file/d/1GFcwdADC4rV1372-jrTsNexCBtaGBHgT/view?usp=sharing"
       },
       instagramFilter: {
         title: "Filtro RA",
@@ -90,13 +90,13 @@ export const translations = {
         title: "Ximena's Story",
         description: "Discover a human and immersive story in 360° format.",
         youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "/donwloable-video-ph.mp4"
+        downloadLink: "https://drive.google.com/file/d/1wVyKLY-WeWX21Yrp_auAhcIG6Y003duK/view?usp=sharing"
       },
       cuerpoHumano: {
         title: "The Human Body",
         description: "Explore the human body from an interactive and educational perspective.",
         youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "/donwloable-video-ph.mp4"
+        downloadLink: "https://drive.google.com/file/d/1wVyKLY-WeWX21Yrp_auAhcIG6Y003duK/view?usp=sharing"
       },
       instagramFilter: {
         title: "AR Filter",
@@ -151,13 +151,13 @@ export const translations = {
         title: "A vida de Ximena",
         description: "Conheça uma história humana e imersiva em formato 360°.",
         youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "/donwloable-video-ph.mp4"
+        downloadLink: "https://drive.google.com/file/d/1cF4E2FHUSyg9iKSfxzOlH1-AD9HS1n80/view?usp=sharing"
       },
       cuerpoHumano: {
         title: "O corpo humano",
         description: "Explore o corpo humano de uma perspectiva interativa e educacional.",
         youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "/donwloable-video-ph.mp4"
+        downloadLink: "https://drive.google.com/file/d/1cF4E2FHUSyg9iKSfxzOlH1-AD9HS1n80/view?usp=sharing"
       },
       instagramFilter: {
         title: "Filtro RA",
