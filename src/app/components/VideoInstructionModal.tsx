@@ -117,7 +117,7 @@ export function VideoInstructionModal({ isOpen, onClose, onStart, language }: Vi
                     onClick={onClose}
                     className="flex-1 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl bg-white/5 hover:bg-white/10 text-white text-sm sm:text-base border border-white/10 transition-all duration-300"
                   >
-                    {t.understood}
+                    {t.cancel}
                   </motion.button>
 
                   <motion.button

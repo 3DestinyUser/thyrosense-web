@@ -80,7 +80,7 @@ export function LanguageSelector({ isOpen, onSelect, language }: LanguageSelecto
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3 sm:gap-4">
-                          <span className="text-2xl sm:text-3xl">{lang.flag}</span>
+                          <img src={lang.flag} alt="" className="w-8 h-8 sm:w-9 sm:h-9 object-contain" />
                           <span className="text-base sm:text-lg">{lang.name}</span>
                         </div>
                         {selectedLanguage === lang.code && (

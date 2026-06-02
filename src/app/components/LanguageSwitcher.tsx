@@ -21,7 +21,9 @@ export function LanguageSwitcher({ currentLanguage, onLanguageChange }: Language
           onClick={() => setIsOpen(!isOpen)}
           className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-gray-200 hover:shadow-xl transition-all"
         >
-          <span className="text-lg sm:text-xl">{currentLang?.flag}</span>
+          {currentLang && (
+            <img src={currentLang.flag} alt="" className="w-5 h-5 sm:w-6 sm:h-6 object-contain" />
+          )}
           <span className="text-xs sm:text-sm font-medium text-gray-900">{currentLang?.code.toUpperCase()}</span>
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
@@ -60,7 +62,7 @@ export function LanguageSwitcher({ currentLanguage, onLanguageChange }: Language
                     style={currentLanguage === lang.code ? { backgroundColor: "#F5F3FF" } : {}}
                     className="w-full flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2.5 sm:py-3 transition-colors"
                   >
-                    <span className="text-xl sm:text-2xl">{lang.flag}</span>
+                    <img src={lang.flag} alt="" className="w-6 h-6 sm:w-7 sm:h-7 object-contain" />
                     <span className={`text-xs sm:text-sm font-medium ${currentLanguage === lang.code ? "text-violet-700" : "text-gray-900"}`}>
                       {lang.name}
                     </span>
