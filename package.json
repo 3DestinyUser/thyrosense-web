@@ -66,9 +66,12 @@
     "vaul": "1.1.2"
   },
   "devDependencies": {
+    "@types/react": "18.3.28",
+    "@types/react-dom": "18.3.7",
     "@tailwindcss/vite": "4.1.12",
     "@vitejs/plugin-react": "4.7.0",
     "tailwindcss": "4.1.12",
+    "typescript": "5.9.3",
     "vite": "6.3.5"
   },
   "peerDependencies": {
@@ -81,11 +84,6 @@
     },
     "react-dom": {
       "optional": true
-    }
-  },
-  "pnpm": {
-    "overrides": {
-      "vite": "6.3.5"
     }
   }
 }

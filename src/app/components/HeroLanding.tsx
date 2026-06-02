@@ -3,6 +3,7 @@ import { Play } from "lucide-react";
 import { translations, LanguageCode } from "../translations";
 import logoMerck from "../../imports/logo-merck.png";
 import bgImage from "../../imports/Container__1_.png";
+import { Footer } from "./Footer";
 
 interface HeroLandingProps {
   onStart: () => void;
@@ -13,14 +14,14 @@ export function HeroLanding({ onStart, language }: HeroLandingProps) {
   const t = translations[language].hero;
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-violet-50">
+    <div className="relative min-h-screen w-full flex flex-col overflow-hidden bg-gradient-to-br from-gray-50 via-white to-violet-50">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(123,63,242,0.05),transparent_50%)]" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="relative z-10 flex flex-col items-center gap-8 md:gap-12 px-4 sm:px-6 max-w-5xl mx-auto py-8 md:py-0"
+        className="relative z-10 flex flex-1 flex-col items-center justify-center gap-8 md:gap-12 px-4 sm:px-6 max-w-5xl mx-auto py-8"
       >
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
@@ -127,7 +128,7 @@ export function HeroLanding({ onStart, language }: HeroLandingProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 1 }}
-          className="absolute bottom-4 md:bottom-8 left-0 right-0 flex justify-center"
+          className="absolute bottom-4 sm:bottom-0 md:bottom-0 left-0 right-0 flex justify-center"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -142,6 +143,10 @@ export function HeroLanding({ onStart, language }: HeroLandingProps) {
           </motion.div>
         </motion.div>
       </motion.div>
+
+      <div className="relative z-10">
+        <Footer language={language} />
+      </div>
     </div>
   );
 }

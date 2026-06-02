@@ -1,3 +1,10 @@
+import instagramFilterQrImageEs from "../imports/frame.png";
+import instagramFilterQrImageEn from "../imports/frame.png";
+import instagramFilterQrImagePt from "../imports/frame.png";
+import flagEs from "../imports/ES.png";
+import flagEn from "../imports/EN.png";
+import flagPt from "../imports/PR.png";
+
 export const translations = {
   es: {
     hero: {
@@ -20,15 +27,21 @@ export const translations = {
       scanQR: "Escanear QR",
       ximena: {
         title: "La vida de Ximena",
-        description: "Conoce una historia humana e inmersiva en formato 360°."
+        description: "Conoce una historia humana e inmersiva en formato 360°.",
+        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
+        downloadLink: "/donwloable-video-ph.mp4"
       },
       cuerpoHumano: {
         title: "El cuerpo humano",
-        description: "Explora el cuerpo humano desde una perspectiva interactiva y educativa."
+        description: "Explora el cuerpo humano desde una perspectiva interactiva y educativa.",
+        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
+        downloadLink: "/donwloable-video-ph.mp4"
       },
-      tercera: {
+      instagramFilter: {
         title: "Filtro RA",
-        description: "Visualiza signos y síntomas de las personas que viven con hipotiroidismo"
+        description: "Visualiza signos y síntomas de las personas que viven con hipotiroidismo",
+        pageLink: "https://thyrosense-ar.vercel.app/",
+        qrImage: instagramFilterQrImageEs
       }
     },
     videoInstructions: {
@@ -40,7 +53,7 @@ export const translations = {
       instruction2Sub: "gira en todas direcciones",
       instruction3: "Experiencia VR",
       instruction3Sub: "inmersión completa",
-      understood: "Entendido",
+      cancel: "Volver",
       start: "Comenzar experiencia"
     },
     videoPlayer: {
@@ -75,15 +88,21 @@ export const translations = {
       scanQR: "Scan QR",
       ximena: {
         title: "Ximena's Story",
-        description: "Discover a human and immersive story in 360° format."
+        description: "Discover a human and immersive story in 360° format.",
+        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
+        downloadLink: "/donwloable-video-ph.mp4"
       },
       cuerpoHumano: {
         title: "The Human Body",
-        description: "Explore the human body from an interactive and educational perspective."
+        description: "Explore the human body from an interactive and educational perspective.",
+        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
+        downloadLink: "/donwloable-video-ph.mp4"
       },
-      tercera: {
+      instagramFilter: {
         title: "AR Filter",
-        description: "Visualize signs and symptoms of people living with hypothyroidism"
+        description: "Visualize signs and symptoms of people living with hypothyroidism",
+        pageLink: "https://thyrosense-ar.vercel.app/",
+        qrImage: instagramFilterQrImageEn
       }
     },
     videoInstructions: {
@@ -95,7 +114,7 @@ export const translations = {
       instruction2Sub: "rotate in all directions",
       instruction3: "VR Experience",
       instruction3Sub: "full immersion",
-      understood: "Got it",
+      cancel: "Back",
       start: "Start experience"
     },
     videoPlayer: {
@@ -130,15 +149,21 @@ export const translations = {
       scanQR: "Escanear QR",
       ximena: {
         title: "A vida de Ximena",
-        description: "Conheça uma história humana e imersiva em formato 360°."
+        description: "Conheça uma história humana e imersiva em formato 360°.",
+        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
+        downloadLink: "/donwloable-video-ph.mp4"
       },
       cuerpoHumano: {
         title: "O corpo humano",
-        description: "Explore o corpo humano de uma perspectiva interativa e educacional."
+        description: "Explore o corpo humano de uma perspectiva interativa e educacional.",
+        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
+        downloadLink: "/donwloable-video-ph.mp4"
       },
-      tercera: {
+      instagramFilter: {
         title: "Filtro RA",
-        description: "Visualize sinais e sintomas das pessoas que vivem com hipotireoidismo"
+        description: "Visualize sinais e sintomas das pessoas que vivem com hipotireoidismo",
+        pageLink: "https://thyrosense-ar.vercel.app/",
+        qrImage: instagramFilterQrImagePt
       }
     },
     videoInstructions: {
@@ -150,7 +175,7 @@ export const translations = {
       instruction2Sub: "gire em todas as direções",
       instruction3: "Experiência VR",
       instruction3Sub: "imersão completa",
-      understood: "Entendi",
+      cancel: "Voltar",
       start: "Começar experiência"
     },
     videoPlayer: {
@@ -167,9 +192,9 @@ export const translations = {
 };
 
 export const languages = [
-  { code: "es", name: "Español", flag: "🇪🇸" },
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "pt", name: "Português", flag: "🇧🇷" }
+  { code: "es", name: "Español", flag: flagEs },
+  { code: "en", name: "English", flag: flagEn },
+  { code: "pt", name: "Português", flag: flagPt }
 ];
 
 export type LanguageCode = keyof typeof translations;

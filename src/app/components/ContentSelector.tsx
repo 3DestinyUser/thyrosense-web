@@ -1,22 +1,20 @@
 import { motion } from "motion/react";
 import { Play, Download } from "lucide-react";
+import { useState } from "react";
 import { translations, LanguageCode } from "../translations";
 import imgXimena from "../../imports/Container__2_.png";
 import imgCuerpoHumano from "../../imports/Container__3_.png";
 import imgTercera from "../../imports/Container-3.png";
+import { QrCodeModal } from "./QrCodeModal";
+import { Footer } from "./Footer";
 
 interface ContentSelectorProps {
   onSelectContent: (contentId: string) => void;
   language: LanguageCode;
 }
 
-const videoDownloadLinks: Record<string, string> = {
-  ximena: "https://example.com/videos/ximena-360.mp4",
-  "cuerpo-humano": "https://example.com/videos/cuerpo-humano-360.mp4",
-  tercera: "https://example.com/videos/tercera-360.mp4"
-};
-
 export function ContentSelector({ onSelectContent, language }: ContentSelectorProps) {
+  const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const t = translations[language].contentSelector;
 
   const contents = [
@@ -37,9 +35,9 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
       bgColor: "bg-gradient-to-br from-blue-50 to-violet-50"
     },
     {
-      id: "tercera",
-      title: t.tercera.title,
-      description: t.tercera.description,
+      id: "InstagramFilter",
+      title: t.instagramFilter.title,
+      description: t.instagramFilter.description,
       image: imgTercera,
       gradient: "from-amber-500 via-orange-500 to-yellow-500",
       bgColor: "bg-gradient-to-br from-amber-50 to-orange-50"
@@ -47,7 +45,10 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
   ];
 
   const handleDownload = (contentId: string) => {
-    const downloadUrl = videoDownloadLinks[contentId];
+    const downloadUrl =
+      contentId === "ximena"
+        ? t.ximena.downloadLink
+        : t.cuerpoHumano.downloadLink;
     const link = document.createElement('a');
     link.href = downloadUrl;
     link.download = `${contentId}-360.mp4`;
@@ -55,22 +56,27 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
     link.click();
     document.body.removeChild(link);
   };
+
+  const handleOpenFilter = () => {
+    window.open(t.instagramFilter.pageLink, "_blank", "noopener,noreferrer");
+  };
+
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 via-white to-violet-50 py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+    <div className="min-h-screen w-full flex flex-col bg-gradient-to-br from-gray-50 via-white to-violet-50 pt-12 sm:pt-16 md:pt-20 px-4 sm:px-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-7xl mx-auto"
+        className="max-w-7xl mx-auto flex-1"
       >
-        <div className="text-center mb-10 sm:mb-12 md:mb-16">
+        <div className="text-center mb-10 sm:mb-10 md:mb-12">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
             className="inline-block mb-4"
           >
-            <div className="px-4 sm:px-6 py-2 rounded-full bg-violet-100 border border-violet-200">
+            <div className="px-4 sm:px-2 py-2 rounded-full bg-violet-100 border border-violet-200">
               <span className="text-xs sm:text-sm text-violet-700 tracking-wide">{t.badge}</span>
             </div>
           </motion.div>
@@ -95,11 +101,10 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + index * 0.2, duration: 0.8 }}
-              whileHover={{ y: -8 }}
-              className="group relative"
+              className="relative"
             >
               <div
-                className="absolute -inset-1 rounded-3xl opacity-30 blur-2xl group-hover:opacity-60 transition-all duration-500"
+                className="absolute -inset-1 rounded-3xl opacity-30 blur-2xl"
                 style={{
                   backgroundImage:
                     content.id === "ximena"
@@ -111,7 +116,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
               />
 
               <div className="relative h-full">
-                <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl border border-white/50 backdrop-blur-sm">
+                <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl border border-white/50">
                   <div className="aspect-[16/10] relative overflow-hidden">
                     <img
                       src={content.image}
@@ -121,20 +126,20 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                     <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent`} />
                   </div>
 
-                  <div className="p-6 sm:p-8 bg-white/80 backdrop-blur-sm">
+                  <div className="p-3 sm:p-4 py-3 sm:py-6 bg-white/80">
                     <h3 className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-gray-900">{content.title}</h3>
                     <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                       {content.description}
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-3">
-                      {content.id === "tercera" ? (
+                      {content.id === "InstagramFilter" ? (
                         <>
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
-                            onClick={() => onSelectContent(content.id)}
-                            className="relative flex-1 px-5 sm:px-6 py-3 sm:py-4 rounded-2xl overflow-hidden"
+                            onClick={handleOpenFilter}
+                            className="relative flex-1 sm:min-h-20 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
                             style={{
                               backgroundColor: "#F59E0B",
                               backgroundImage: "linear-gradient(to right, #F59E0B, #FBBF24)"
@@ -151,8 +156,8 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
-                            onClick={() => handleDownload(content.id)}
-                            className="relative flex-1 px-5 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
+                            onClick={() => setIsQrModalOpen(true)}
+                            className="relative flex-1 sm:min-h-20 px-2 sm:px-2 py-3 sm:py-4 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
                             style={{ borderColor: "#F59E0B" }}
                           >
                             <div
@@ -175,7 +180,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => onSelectContent(content.id)}
-                            className="group/btn relative flex-1 px-5 sm:px-6 py-3 sm:py-4 rounded-2xl overflow-hidden"
+                            className="group/btn relative flex-1 sm:min-h-20 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
                           >
                             <div
                               className="absolute inset-0 transition-all duration-300 group-hover/btn:scale-110"
@@ -207,7 +212,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => handleDownload(content.id)}
-                            className="relative flex-1 px-5 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
+                            className="relative flex-1 sm:min-h-20 px-2 sm:px-2 py-3 sm:py-4 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
                             style={{
                               borderColor: content.id === "ximena" ? "#F43F5E" : "#3B82F6"
                             }}
@@ -242,6 +247,15 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
           ))}
         </div>
       </motion.div>
+
+      <Footer language={language} />
+
+      <QrCodeModal
+        isOpen={isQrModalOpen}
+        onClose={() => setIsQrModalOpen(false)}
+        qrImage={t.instagramFilter.qrImage}
+        language={language}
+      />
     </div>
   );
 }
