@@ -35,7 +35,7 @@ export const translations = {
         title: "El cuerpo humano",
         description: "Explora el cuerpo humano desde una perspectiva interactiva y educativa.",
         youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "https://drive.google.com/file/d/1GFcwdADC4rV1372-jrTsNexCBtaGBHgT/view?usp=sharing"
+        downloadLink: "https://drive.google.com/file/d/1B9kUphmxNZ-SgjILaCeNjqSlyVE2wfxx/view?usp=sharing"
       },
       instagramFilter: {
         title: "Filtro RA",
@@ -96,7 +96,7 @@ export const translations = {
         title: "The Human Body",
         description: "Explore the human body from an interactive and educational perspective.",
         youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "https://drive.google.com/file/d/1wVyKLY-WeWX21Yrp_auAhcIG6Y003duK/view?usp=sharing"
+        downloadLink: "https://drive.google.com/file/d/111AJZ-P7wGvh_jr8ljrEXsexX_QRvpEm/view?usp=sharing"
       },
       instagramFilter: {
         title: "AR Filter",
@@ -157,7 +157,7 @@ export const translations = {
         title: "O corpo humano",
         description: "Explore o corpo humano de uma perspectiva interativa e educacional.",
         youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "https://drive.google.com/file/d/1cF4E2FHUSyg9iKSfxzOlH1-AD9HS1n80/view?usp=sharing"
+        downloadLink: "https://drive.google.com/file/d/1zd51xjqscZkHbANlRG5pfNjCCzcwC_fV/view?usp=sharing"
       },
       instagramFilter: {
         title: "Filtro RA",
