@@ -16,6 +16,10 @@ interface ContentSelectorProps {
 export function ContentSelector({ onSelectContent, language }: ContentSelectorProps) {
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const t = translations[language].contentSelector;
+  const driveMode = "drive";
+  const downloadMode = "download";
+  type DownloadBehavior = typeof driveMode | typeof downloadMode;
+  const downloadBehavior: DownloadBehavior = driveMode;
 
   const contents = [
     {
@@ -49,12 +53,20 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
       contentId === "ximena"
         ? t.ximena.downloadLink
         : t.cuerpoHumano.downloadLink;
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-    link.download = `${contentId}-360.mp4`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+
+    if (downloadBehavior === driveMode) {
+      window.open(downloadUrl, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    if (downloadBehavior === downloadMode) {
+      const link = document.createElement("a");
+      link.href = downloadUrl;
+      link.download = `${contentId}-360.mp4`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   const handleOpenFilter = () => {
@@ -69,12 +81,12 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
         transition={{ duration: 0.8 }}
         className="max-w-7xl mx-auto flex-1"
       >
-        <div className="text-center mb-10 sm:mb-10 md:mb-12">
+        <div className="text-center mb-2 sm:mb-10 md:mb-12">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-block mb-4"
+            className="inline-block mb-1 sm:mb-2 md:mb-4"
           >
             <div className="px-4 sm:px-2 py-2 rounded-full bg-violet-100 border border-violet-200">
               <span className="text-xs sm:text-sm text-violet-700 tracking-wide">{t.badge}</span>
@@ -82,7 +94,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
           </motion.div>
 
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 sm:mb-4 bg-clip-text text-transparent px-4"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 sm:mb-4 bg-clip-text text-transparent px-4"
             style={{
               backgroundImage: "linear-gradient(to right, #111827, #4C1D95, #111827)"
             }}
@@ -127,7 +139,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                   </div>
 
                   <div className="p-3 sm:p-4 py-3 sm:py-6 bg-white/80">
-                    <h3 className="text-2xl sm:text-3xl mb-2 sm:mb-3 text-gray-900">{content.title}</h3>
+                    <h3 className="text-1xl sm:text-3xl mb-2 sm:mb-3 text-gray-900">{content.title}</h3>
                     <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                       {content.description}
                     </p>
