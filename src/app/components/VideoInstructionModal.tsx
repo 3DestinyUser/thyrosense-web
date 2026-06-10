@@ -32,8 +32,8 @@ export function VideoInstructionModal({ isOpen, onClose, onStart, language }: Vi
               style={{ backgroundImage: "linear-gradient(to right, #7B3FF2, #9B5BFF, #7B3FF2)" }}
             />
 
-            <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/10">
-              <div className="flex flex-col items-center gap-6 sm:gap-8">
+            <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-3xl p-4 sm:p-8 md:p-10 shadow-2xl border border-white/10">
+              <div className="flex flex-col items-center gap-1 md:gap-6 sm:gap-8">
                 <motion.div
                   animate={{
                     rotate: [0, 5, -5, 0],
@@ -52,19 +52,19 @@ export function VideoInstructionModal({ isOpen, onClose, onStart, language }: Vi
 
                 <div className="text-center">
                   <h2 className="text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 text-white">{t.title}</h2>
-                  <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed max-w-lg px-2">
+                  <p className="text-sm sm:text-base md:text-lg text-gray-300 leading-tight md:leading-relaxed max-w-lg px-2">
                     {t.description}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 sm:gap-4 w-full">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                     className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"
                   >
-                    <div className="flex flex-col items-center gap-3 text-center">
+                    <div className="flex flex-row md:flex-col items-center gap-3 text-center">
                       <div className="w-12 h-12 rounded-full bg-violet-600/20 flex items-center justify-center">
                         <MousePointerClick className="w-6 h-6 text-violet-400" />
                       </div>
@@ -81,7 +81,7 @@ export function VideoInstructionModal({ isOpen, onClose, onStart, language }: Vi
                     transition={{ delay: 0.3 }}
                     className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"
                   >
-                    <div className="flex flex-col items-center gap-3 text-center">
+                    <div className="flex flex-row md:flex-col items-center gap-3 text-center">
                       <div className="w-12 h-12 rounded-full bg-violet-600/20 flex items-center justify-center">
                         <RotateCw className="w-6 h-6 text-violet-400" />
                       </div>
@@ -98,7 +98,7 @@ export function VideoInstructionModal({ isOpen, onClose, onStart, language }: Vi
                     transition={{ delay: 0.4 }}
                     className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"
                   >
-                    <div className="flex flex-col items-center gap-3 text-center">
+                    <div className="flex flex-row md:flex-col items-center gap-3 text-center">
                       <div className="w-12 h-12 rounded-full bg-violet-600/20 flex items-center justify-center">
                         <Glasses className="w-6 h-6 text-violet-400" />
                       </div>

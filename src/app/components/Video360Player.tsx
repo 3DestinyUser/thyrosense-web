@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Maximize2, Pause, Play, Volume2, VolumeX, X } from "lucide-react";
+import { Compass, Maximize2, Pause, Play, Volume2, VolumeX, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { translations, LanguageCode } from "../translations";
 
@@ -10,10 +10,15 @@ interface Video360PlayerProps {
 }
 
 interface SphericalProperties {
+  enableOrientationSensor?: boolean;
   yaw?: number;
   pitch?: number;
   roll?: number;
   fov?: number;
+}
+
+interface DeviceOrientationEventWithPermission {
+  requestPermission?: () => Promise<PermissionState>;
 }
 
 interface YouTubePlayer {
@@ -81,12 +86,37 @@ function formatTime(seconds: number) {
   return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
 }
 
+function supportsOrientationSensor() {
+  return (
+    typeof window !== "undefined" &&
+    "DeviceOrientationEvent" in window &&
+    window.matchMedia("(pointer: coarse)").matches
+  );
+}
+
+function getInitialSphericalProperties(player: YouTubePlayer) {
+  const sphericalProperties = player.getSphericalProperties();
+
+  if (Object.keys(sphericalProperties).length > 0) {
+    return sphericalProperties;
+  }
+
+  return {
+    yaw: 0,
+    pitch: 0,
+    roll: 0,
+    fov: 100
+  };
+}
+
 export function Video360Player({ contentId, onClose, language }: Video360PlayerProps) {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isReady, setIsReady] = useState(false);
   const [muted, setMuted] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [sensorEnabled, setSensorEnabled] = useState(false);
+  const [sensorSupported] = useState(supportsOrientationSensor);
   const containerRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<YouTubePlayer | null>(null);
   const sphericalRef = useRef<SphericalProperties | null>(null);
@@ -134,7 +164,18 @@ export function Video360Player({ contentId, onClose, language }: Video360PlayerP
             }
 
             setIsReady(true);
-            event.target.getIframe().style.pointerEvents = "none";
+            const iframe = event.target.getIframe();
+            const iframeAllow = iframe.getAttribute("allow");
+            iframe.setAttribute(
+              "allow",
+              [iframeAllow, "accelerometer", "gyroscope", "fullscreen"]
+                .filter(Boolean)
+                .join("; ")
+            );
+            iframe.style.pointerEvents = "none";
+            event.target.setSphericalProperties({ enableOrientationSensor: false });
+            setSensorEnabled(false);
+            sphericalRef.current = getInitialSphericalProperties(event.target);
             progressIntervalId = window.setInterval(() => {
               setCurrentTime(event.target.getCurrentTime());
               setDuration(event.target.getDuration());
@@ -179,10 +220,18 @@ export function Video360Player({ contentId, onClose, language }: Video360PlayerP
   }, [videoId]);
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (!sphericalRef.current) {
+    const player = playerRef.current;
+
+    if (!player) {
       return;
     }
 
+    if (sensorEnabled) {
+      player.setSphericalProperties({ enableOrientationSensor: false });
+      setSensorEnabled(false);
+    }
+
+    sphericalRef.current = getInitialSphericalProperties(player);
     event.currentTarget.setPointerCapture(event.pointerId);
     dragRef.current = {
       pointerId: event.pointerId,
@@ -252,6 +301,39 @@ export function Video360Player({ contentId, onClose, language }: Video360PlayerP
     }
 
     setMuted(!muted);
+  };
+
+  const enableOrientationSensor = async () => {
+    if (!isReady || !sensorSupported) {
+      return;
+    }
+
+    if (sensorEnabled) {
+      playerRef.current?.setSphericalProperties({ enableOrientationSensor: false });
+      setSensorEnabled(false);
+      return;
+    }
+
+    const orientationEvent = window.DeviceOrientationEvent as unknown as DeviceOrientationEventWithPermission;
+    let permission: PermissionState = "granted";
+
+    try {
+      permission =
+        orientationEvent.requestPermission !== undefined
+          ? await orientationEvent.requestPermission()
+          : "granted";
+    } catch {
+      permission = "denied";
+    }
+
+    if (permission !== "granted") {
+      setSensorEnabled(false);
+      playerRef.current?.setSphericalProperties({ enableOrientationSensor: false });
+      return;
+    }
+
+    playerRef.current?.setSphericalProperties({ enableOrientationSensor: true });
+    setSensorEnabled(true);
   };
 
   const seekFromPointer = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -383,6 +465,20 @@ export function Video360Player({ contentId, onClose, language }: Video360PlayerP
               <Volume2 className="h-4 w-4 text-white sm:h-5 sm:w-5" />
             )}
           </motion.button>
+
+          {sensorSupported && (
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={enableOrientationSensor}
+              disabled={!isReady}
+              className={`pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 backdrop-blur-sm transition-colors hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-50 sm:h-12 sm:w-12 ${
+                sensorEnabled ? "bg-violet-500/70" : "bg-white/10"
+              }`}
+            >
+              <Compass className="h-4 w-4 text-white sm:h-5 sm:w-5" />
+            </motion.button>
+          )}
 
           <motion.button
             whileHover={{ scale: 1.1 }}
