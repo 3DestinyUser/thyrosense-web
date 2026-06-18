@@ -40,14 +40,14 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-gradient-to-br from-gray-50 via-white to-violet-50 pt-12 sm:pt-16 md:pt-20 px-4 sm:px-2">
+    <div className="min-h-screen w-full flex flex-col bg-gradient-to-br from-gray-50 via-white to-violet-50 pt-12 sm:pt-16 md:pt-12 lg:pt-10 px-4 sm:px-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="max-w-7xl mx-auto flex-1"
       >
-        <div className="text-center mb-2 sm:mb-10 md:mb-12">
+        <div className="text-center mb-2 sm:mb-10 md:mb-8">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -60,7 +60,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
           </motion.div>
 
           <h1
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 sm:mb-4 bg-clip-text text-transparent px-4"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl mb-3 sm:mb-4 bg-clip-text text-transparent px-4"
             style={{
               backgroundImage: "linear-gradient(to right, #111827, #4C1D95, #111827)"
             }}
@@ -95,7 +95,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
 
               <div className="relative h-full">
                 <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl border border-white/50">
-                  <div className="aspect-[16/10] relative overflow-hidden">
+                  <div className="aspect-video relative overflow-hidden">
                     <img
                       src={content.image}
                       alt={content.title}
@@ -106,7 +106,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
 
                   <div className="p-3 sm:p-4 py-3 sm:py-6 bg-white/80">
                     <h3 className="text-1xl sm:text-3xl mb-2 sm:mb-3 text-gray-900">{content.title}</h3>
-                    <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
+                    <p className="min-h-[4.5rem] text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                       {content.description}
                     </p>
 
@@ -117,7 +117,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={handleOpenFilter}
-                            className="relative flex-1 sm:min-h-20 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
+                            className="relative flex-1 sm:min-h-16 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
                             style={{
                               backgroundColor: "#F59E0B",
                               backgroundImage: "linear-gradient(to right, #F59E0B, #FBBF24)"
@@ -135,7 +135,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => setIsQrModalOpen(true)}
-                            className="relative flex-1 sm:min-h-20 px-2 sm:px-2 py-3 sm:py-4 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
+                            className="relative flex-1 sm:min-h-16 px-2 sm:px-2 py-3 sm:py-4 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
                             style={{ borderColor: "#F59E0B" }}
                           >
                             <div
@@ -157,7 +157,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.98 }}
                           onClick={() => onSelectContent(content.id)}
-                          className="group/btn relative flex-1 sm:min-h-20 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
+                          className="group/btn relative flex-1 sm:min-h-16 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
                         >
                           <div
                             className="absolute inset-0 transition-all duration-300 group-hover/btn:scale-110"
