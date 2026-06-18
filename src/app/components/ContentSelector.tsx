@@ -1,9 +1,8 @@
 import { motion } from "motion/react";
-import { Play, Download } from "lucide-react";
+import { Play } from "lucide-react";
 import { useState } from "react";
 import { translations, LanguageCode } from "../translations";
 import imgXimena from "../../imports/Container__2_.png";
-import imgCuerpoHumano from "../../imports/Container__3_.png";
 import imgTercera from "../../imports/Container-3.png";
 import { QrCodeModal } from "./QrCodeModal";
 import { Footer } from "./Footer";
@@ -16,10 +15,6 @@ interface ContentSelectorProps {
 export function ContentSelector({ onSelectContent, language }: ContentSelectorProps) {
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const t = translations[language].contentSelector;
-  const driveMode = "drive";
-  const downloadMode = "download";
-  type DownloadBehavior = typeof driveMode | typeof downloadMode;
-  const downloadBehavior: DownloadBehavior = driveMode;
 
   const contents = [
     {
@@ -31,14 +26,6 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
       bgColor: "bg-gradient-to-br from-rose-50 to-violet-50"
     },
     {
-      id: "cuerpo-humano",
-      title: t.cuerpoHumano.title,
-      description: t.cuerpoHumano.description,
-      image: imgCuerpoHumano,
-      gradient: "from-blue-500 via-cyan-500 to-violet-500",
-      bgColor: "bg-gradient-to-br from-blue-50 to-violet-50"
-    },
-    {
       id: "InstagramFilter",
       title: t.instagramFilter.title,
       description: t.instagramFilter.description,
@@ -48,40 +35,19 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
     }
   ];
 
-  const handleDownload = (contentId: string) => {
-    const downloadUrl =
-      contentId === "ximena"
-        ? t.ximena.downloadLink
-        : t.cuerpoHumano.downloadLink;
-
-    if (downloadBehavior === driveMode) {
-      window.open(downloadUrl, "_blank", "noopener,noreferrer");
-      return;
-    }
-
-    if (downloadBehavior === downloadMode) {
-      const link = document.createElement("a");
-      link.href = downloadUrl;
-      link.download = `${contentId}-360.mp4`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  };
-
   const handleOpenFilter = () => {
     window.open(t.instagramFilter.pageLink, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-gradient-to-br from-gray-50 via-white to-violet-50 pt-12 sm:pt-16 md:pt-20 px-4 sm:px-2">
+    <div className="min-h-screen w-full flex flex-col bg-gradient-to-br from-gray-50 via-white to-violet-50 pt-12 sm:pt-16 md:pt-12 lg:pt-10 px-4 sm:px-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="max-w-7xl mx-auto flex-1"
       >
-        <div className="text-center mb-2 sm:mb-10 md:mb-12">
+        <div className="text-center mb-2 sm:mb-10 md:mb-8">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -94,7 +60,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
           </motion.div>
 
           <h1
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 sm:mb-4 bg-clip-text text-transparent px-4"
+            className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl mb-3 sm:mb-4 bg-clip-text text-transparent px-4"
             style={{
               backgroundImage: "linear-gradient(to right, #111827, #4C1D95, #111827)"
             }}
@@ -106,7 +72,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {contents.map((content, index) => (
             <motion.div
               key={content.id}
@@ -129,7 +95,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
 
               <div className="relative h-full">
                 <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl border border-white/50">
-                  <div className="aspect-[16/10] relative overflow-hidden">
+                  <div className="aspect-video relative overflow-hidden">
                     <img
                       src={content.image}
                       alt={content.title}
@@ -140,7 +106,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
 
                   <div className="p-3 sm:p-4 py-3 sm:py-6 bg-white/80">
                     <h3 className="text-1xl sm:text-3xl mb-2 sm:mb-3 text-gray-900">{content.title}</h3>
-                    <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
+                    <p className="min-h-[4.5rem] text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                       {content.description}
                     </p>
 
@@ -151,7 +117,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={handleOpenFilter}
-                            className="relative flex-1 sm:min-h-20 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
+                            className="relative flex-1 sm:min-h-16 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
                             style={{
                               backgroundColor: "#F59E0B",
                               backgroundImage: "linear-gradient(to right, #F59E0B, #FBBF24)"
@@ -169,7 +135,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => setIsQrModalOpen(true)}
-                            className="relative flex-1 sm:min-h-20 px-2 sm:px-2 py-3 sm:py-4 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
+                            className="relative flex-1 sm:min-h-16 px-2 sm:px-2 py-3 sm:py-4 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
                             style={{ borderColor: "#F59E0B" }}
                           >
                             <div
@@ -187,69 +153,37 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                           </motion.button>
                         </>
                       ) : (
-                        <>
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={() => onSelectContent(content.id)}
-                            className="group/btn relative flex-1 sm:min-h-20 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
-                          >
-                            <div
-                              className="absolute inset-0 transition-all duration-300 group-hover/btn:scale-110"
-                              style={{
-                                backgroundImage:
-                                  content.id === "ximena"
-                                    ? "linear-gradient(to right, #F43F5E, #EC4899, #A855F7)"
-                                    : "linear-gradient(to right, #3B82F6, #06B6D4, #A855F7)"
-                              }}
-                            />
-                            <div
-                              className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 blur-xl"
-                              style={{
-                                backgroundImage:
-                                  content.id === "ximena"
-                                    ? "linear-gradient(to right, #F43F5E, #EC4899, #A855F7)"
-                                    : "linear-gradient(to right, #3B82F6, #06B6D4, #A855F7)"
-                              }}
-                            />
-                            <div className="relative flex items-center justify-center gap-2 text-white">
-                              <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
-                              <span className="text-sm sm:text-base tracking-wide">
-                                {t.view360}
-                              </span>
-                            </div>
-                          </motion.button>
-
-                          <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={() => handleDownload(content.id)}
-                            className="relative flex-1 sm:min-h-20 px-2 sm:px-2 py-3 sm:py-4 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.98 }}
+                          onClick={() => onSelectContent(content.id)}
+                          className="group/btn relative flex-1 sm:min-h-16 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
+                        >
+                          <div
+                            className="absolute inset-0 transition-all duration-300 group-hover/btn:scale-110"
                             style={{
-                              borderColor: content.id === "ximena" ? "#F43F5E" : "#3B82F6"
+                              backgroundImage:
+                                content.id === "ximena"
+                                  ? "linear-gradient(to right, #F43F5E, #EC4899, #A855F7)"
+                                  : "linear-gradient(to right, #3B82F6, #06B6D4, #A855F7)"
                             }}
-                          >
-                            <div
-                              className="absolute inset-0 opacity-0 group-hover/download:opacity-10 transition-opacity duration-300"
-                              style={{
-                                backgroundImage:
-                                  content.id === "ximena"
-                                    ? "linear-gradient(to right, #F43F5E, #EC4899, #A855F7)"
-                                    : "linear-gradient(to right, #3B82F6, #06B6D4, #A855F7)"
-                              }}
-                            />
-                            <div className="relative flex items-center justify-center gap-2"
-                              style={{
-                                color: content.id === "ximena" ? "#F43F5E" : "#3B82F6"
-                              }}
-                            >
-                              <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-                              <span className="text-sm sm:text-base tracking-wide">
-                                {t.download}
-                              </span>
-                            </div>
-                          </motion.button>
-                        </>
+                          />
+                          <div
+                            className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 blur-xl"
+                            style={{
+                              backgroundImage:
+                                content.id === "ximena"
+                                  ? "linear-gradient(to right, #F43F5E, #EC4899, #A855F7)"
+                                  : "linear-gradient(to right, #3B82F6, #06B6D4, #A855F7)"
+                            }}
+                          />
+                          <div className="relative flex items-center justify-center gap-2 text-white">
+                            <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
+                            <span className="text-sm sm:text-base tracking-wide">
+                              {t.view360}
+                            </span>
+                          </div>
+                        </motion.button>
                       )}
                     </div>
                   </div>

@@ -28,14 +28,14 @@ export const translations = {
       ximena: {
         title: "La vida de Ximena",
         description: "Conoce una historia humana e inmersiva en formato 360°.",
-        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "https://drive.google.com/file/d/1GFcwdADC4rV1372-jrTsNexCBtaGBHgT/view?usp=sharing"
+        youtubeLink: "https://youtu.be/jeRZDaADM1o",
+        downloadLink: ""
       },
       cuerpoHumano: {
         title: "El cuerpo humano",
         description: "Explora el cuerpo humano desde una perspectiva interactiva y educativa.",
-        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "https://drive.google.com/file/d/1B9kUphmxNZ-SgjILaCeNjqSlyVE2wfxx/view?usp=sharing"
+        youtubeLink: "",
+        downloadLink: ""
       },
       instagramFilter: {
         title: "Filtro RA",
@@ -60,11 +60,11 @@ export const translations = {
       helpText: "Arrastra para explorar 360° • Usa los controles para reproducir"
     },
     footer: {
-      code: "RL-NONT-00054, Junio/26",
-      line1: "Este contenido fue diseñado para el público general de los países de habla hispana en América Latina con presencia Merck.",
-      line2: "Las imágenes usadas tienen un propósito meramente ilustrativo y no se encuentran vinculadas a ningún paciente en particular.",
-      address: "Oficina regional ATUSA: ARES TRADING URUGUAY S.A., Zonamericana Ruta 8 Km 17.500, C.P. 91600 Tel: +598 2 5182351, Edificio Merck Serono, Montevideo, Uruguay",
-      rights: "[2026] Merck KGaA || Todos los derechos reservados."
+      code: "RL-NONT-00044",
+      line1: "Esta aplicación y su contenido está dirigido exclusivamente a profesionales de la salud, facultados para prescribir medicamentos en Chile, Colombia, Centroamérica, Ecuador, México, Perú y otras afiliadas de Merck en Latinoamérica.",
+      line2: "Si usted no es un profesional de la salud le solicitamos abstenerse de usar la misma. Esta aplicación requiere una formación especializada para su manejo e interpretación.",
+      address: "",
+      rights: "[2026] MERCK KGaA || ® Todos los derechos reservados."
     }
   },
   en: {
@@ -89,14 +89,14 @@ export const translations = {
       ximena: {
         title: "Ximena's Story",
         description: "Discover a human and immersive story in 360° format.",
-        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "https://drive.google.com/file/d/1wVyKLY-WeWX21Yrp_auAhcIG6Y003duK/view?usp=sharing"
+        youtubeLink: "https://youtu.be/4V-NCPrcDUI",
+        downloadLink: ""
       },
       cuerpoHumano: {
         title: "The Human Body",
         description: "Explore the human body from an interactive and educational perspective.",
-        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "https://drive.google.com/file/d/111AJZ-P7wGvh_jr8ljrEXsexX_QRvpEm/view?usp=sharing"
+        youtubeLink: "",
+        downloadLink: ""
       },
       instagramFilter: {
         title: "AR Filter",
@@ -121,11 +121,11 @@ export const translations = {
       helpText: "Drag to explore 360° • Use controls to play"
     },
     footer: {
-      code: "RL-NONT-00053, June/26",
-      line1: "This content was designed for the general audience in countries with Merck presence.",
-      line2: "The presented images are for illustrative purposes only and do not refer to any particular patient.",
+      code: "RL-NONT-00045, Mar/26",
+      line1: "This application and its content are exclusively for healthcare professionals licensed to prescribe prescription drugs.",
+      line2: "Total or partial reproduction without prior express consent of Merck.",
       address: "",
-      rights: "[2026] Merck KGaA || All rights reserved."
+      rights: "[2026] MERCK KGaA || ® All rights reserved."
     }
   },
   pt: {
@@ -150,14 +150,14 @@ export const translations = {
       ximena: {
         title: "A vida de Ximena",
         description: "Conheça uma história humana e imersiva em formato 360°.",
-        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "https://drive.google.com/file/d/1cF4E2FHUSyg9iKSfxzOlH1-AD9HS1n80/view?usp=sharing"
+        youtubeLink: "https://youtu.be/4CcdN81CU3w",
+        downloadLink: ""
       },
       cuerpoHumano: {
         title: "O corpo humano",
         description: "Explore o corpo humano de uma perspectiva interativa e educacional.",
-        youtubeLink: "https://youtu.be/cwnMVzFnUO4?si=JoDnj6UNakCt0FS_",
-        downloadLink: "https://drive.google.com/file/d/1zd51xjqscZkHbANlRG5pfNjCCzcwC_fV/view?usp=sharing"
+        youtubeLink: "",
+        downloadLink: ""
       },
       instagramFilter: {
         title: "Filtro RA",
@@ -182,11 +182,11 @@ export const translations = {
       helpText: "Arraste para explorar 360° • Use os controles para reproduzir"
     },
     footer: {
-      code: "BR-NONT-00017, Junho/26",
-      line1: "Este conteúdo foi desenvolvido para o público em geral em países com presença da Merck.",
-      line2: "As imagens são somente para fins ilustrativos e não estão vinculadas a nenhum paciente em particular.",
-      address: "Merck no Brasil: Merck S.A. Estrada dos Bandeirantes, 1099, Jacarepaguá – Rio de Janeiro - RJ, CEP 22.710.571, Brasil",
-      rights: "[2026] Merck KGaA || All rights reserved."
+      code: "RL-NONT-00043, Mar/26, Script BR-NONT-00013, , Fev 26",
+      line1: "Este aplicativo e seu conteúdo destinam-se exclusivamente para profissionais de saúde habilitados para prescrever medicamentos sujeitos à prescrição médica.",
+      line2: "É proibida a reprodução total ou parcial sem o consentimento expresso da Merck.",
+      address: "Merck S.A. | Estrada dos Bandeirantes, 1099 | Jacarepaguá - Rio de Janeiro -  RJ - CEP | 22.710.571, Brasil",
+      rights: "[2026] MERCK KGaA || ® Todos os direitos reservados."
     }
   }
 };
