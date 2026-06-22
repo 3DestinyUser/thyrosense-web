@@ -123,10 +123,16 @@ export function Video360Player({ contentId, onClose, language }: Video360PlayerP
   const dragRef = useRef<{ pointerId: number; x: number; y: number } | null>(null);
   const t = translations[language];
   const video =
-    contentId === "ximena"
-      ? t.contentSelector.ximena
-      : t.contentSelector.cuerpoHumano;
-  const videoId = getYouTubeVideoId(video.youtubeLink);
+    contentId === "cuerpo-humano"
+      ? t.contentSelector.cuerpoHumano
+      : t.contentSelector.ximena;
+  const youtubeLink =
+    contentId === "ximena-story"
+      ? t.contentSelector.ximena.storyYoutubeLink
+      : contentId === "cuerpo-humano"
+      ? t.contentSelector.ximena.humanBodyLink
+      : t.contentSelector.ximena.youtubeLink;
+  const videoId = getYouTubeVideoId(youtubeLink);
 
   useEffect(() => {
     let disposed = false;
