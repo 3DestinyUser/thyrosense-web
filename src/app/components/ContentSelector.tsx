@@ -40,46 +40,46 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-gradient-to-br from-gray-50 via-white to-violet-50 pt-12 sm:pt-16 md:pt-12 lg:pt-10 px-4 sm:px-2">
+    <div className="min-h-screen w-full flex flex-col bg-gradient-to-br from-gray-50 via-white to-violet-50 pt-12 sm:pt-16 md:pt-8 lg:pt-6 px-4 sm:px-2">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-7xl mx-auto flex-1"
+        className="flex w-full max-w-7xl flex-1 flex-col mx-auto lg:justify-center"
       >
-        <div className="text-center mb-2 sm:mb-10 md:mb-8">
+        <div className="text-center mb-2 sm:mb-10 md:mb-10">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="inline-block mb-1 sm:mb-2 md:mb-4"
+            className="inline-block mb-1 sm:mb-2"
           >
-            <div className="px-4 sm:px-2 py-2 rounded-full bg-violet-100 border border-violet-200">
+            <div className="px-4 sm:px-2 py-2 md:py-1 rounded-full bg-violet-100 border border-violet-200">
               <span className="text-xs sm:text-sm text-violet-700 tracking-wide">{t.badge}</span>
             </div>
           </motion.div>
 
           <h1
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-5xl mb-3 sm:mb-4 bg-clip-text text-transparent px-4"
+            className="text-2xl sm:text-4xl md:text-4xl mb-3 sm:mb-4 md:mb-2 bg-clip-text text-transparent px-4"
             style={{
               backgroundImage: "linear-gradient(to right, #111827, #4C1D95, #111827)"
             }}
           >
             {t.title}
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4">
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
             {t.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-6 max-w-5xl mx-auto">
           {contents.map((content, index) => (
             <motion.div
               key={content.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 + index * 0.2, duration: 0.8 }}
-              className="relative"
+              className="relative h-full"
             >
               <div
                 className="absolute -inset-1 rounded-3xl opacity-30 blur-2xl"
@@ -94,8 +94,8 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
               />
 
               <div className="relative h-full">
-                <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl border border-white/50">
-                  <div className="aspect-video relative overflow-hidden">
+                <div className="relative h-full flex flex-col bg-white rounded-3xl overflow-hidden shadow-xl border border-white/50">
+                  <div className="aspect-video md:aspect-[2.35/1] lg:aspect-[2.1/1] relative overflow-hidden">
                     <img
                       src={content.image}
                       alt={content.title}
@@ -104,20 +104,24 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                     <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent`} />
                   </div>
 
-                  <div className="p-3 sm:p-4 py-3 sm:py-6 bg-white/80">
-                    <h3 className="text-1xl sm:text-3xl mb-2 sm:mb-3 text-gray-900">{content.title}</h3>
-                    <p className="min-h-[4.5rem] text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 leading-relaxed">
+                  <div className="flex flex-1 flex-col p-3 sm:p-4 py-3 sm:py-6 md:py-4 lg:py-5 bg-white/80">
+                    <h3 className="text-1xl sm:text-3xl md:text-2xl mb-2 sm:mb-3 md:mb-2 lg:mb-4 text-gray-900">{content.title}</h3>
+                    <p className="min-h-[4.5rem] md:min-h-12 text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 md:mb-3 leading-relaxed md:leading-snug">
                       {content.description}
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-3">
+                    <div
+                      className={`mt-auto flex flex-col gap-3 md:gap-2 ${
+                        content.id === "InstagramFilter" ? "sm:flex-row" : ""
+                      }`}
+                    >
                       {content.id === "InstagramFilter" ? (
                         <>
                           <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={handleOpenFilter}
-                            className="relative flex-1 sm:min-h-16 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
+                            className="relative flex-1 sm:min-h-16 md:min-h-12 px-2 sm:px-3 py-3 sm:py-4 md:py-2 rounded-2xl overflow-hidden"
                             style={{
                               backgroundColor: "#F59E0B",
                               backgroundImage: "linear-gradient(to right, #F59E0B, #FBBF24)"
@@ -135,7 +139,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
                             onClick={() => setIsQrModalOpen(true)}
-                            className="relative flex-1 sm:min-h-16 px-2 sm:px-2 py-3 sm:py-4 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
+                            className="relative flex-1 sm:min-h-16 md:min-h-12 px-2 sm:px-2 py-3 sm:py-4 md:py-2 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg group/download overflow-hidden"
                             style={{ borderColor: "#F59E0B" }}
                           >
                             <div
@@ -153,37 +157,86 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
                           </motion.button>
                         </>
                       ) : (
-                        <motion.button
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.98 }}
-                          onClick={() => onSelectContent(content.id)}
-                          className="group/btn relative flex-1 sm:min-h-16 px-2 sm:px-3 py-3 sm:py-4 rounded-2xl overflow-hidden"
-                        >
-                          <div
-                            className="absolute inset-0 transition-all duration-300 group-hover/btn:scale-110"
-                            style={{
-                              backgroundImage:
-                                content.id === "ximena"
-                                  ? "linear-gradient(to right, #F43F5E, #EC4899, #A855F7)"
-                                  : "linear-gradient(to right, #3B82F6, #06B6D4, #A855F7)"
-                            }}
-                          />
-                          <div
-                            className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 blur-xl"
-                            style={{
-                              backgroundImage:
-                                content.id === "ximena"
-                                  ? "linear-gradient(to right, #F43F5E, #EC4899, #A855F7)"
-                                  : "linear-gradient(to right, #3B82F6, #06B6D4, #A855F7)"
-                            }}
-                          />
-                          <div className="relative flex items-center justify-center gap-2 text-white">
-                            <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
-                            <span className="text-sm sm:text-base tracking-wide">
-                              {t.view360}
-                            </span>
-                          </div>
-                        </motion.button>
+                        <>
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => onSelectContent(content.id)}
+                            className="group/btn relative flex-1 sm:min-h-16 md:min-h-12 px-2 sm:px-3 py-3 sm:py-4 md:py-2 rounded-2xl overflow-hidden"
+                          >
+                            <div
+                              className="absolute inset-0 transition-all duration-300 group-hover/btn:scale-110"
+                              style={{
+                                backgroundImage:
+                                  content.id === "ximena"
+                                    ? "linear-gradient(to right, #F43F5E, #EC4899, #A855F7)"
+                                    : "linear-gradient(to right, #3B82F6, #06B6D4, #A855F7)"
+                              }}
+                            />
+                            <div
+                              className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 blur-xl"
+                              style={{
+                                backgroundImage:
+                                  content.id === "ximena"
+                                    ? "linear-gradient(to right, #F43F5E, #EC4899, #A855F7)"
+                                    : "linear-gradient(to right, #3B82F6, #06B6D4, #A855F7)"
+                              }}
+                            />
+                            <div className="relative flex items-center justify-center gap-2 text-white">
+                              <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-white" />
+                              <span className="text-sm sm:text-base tracking-wide">
+                                {t.view360}
+                              </span>
+                            </div>
+                          </motion.button>
+                          {content.id === "ximena" && (
+                            <div className="flex flex-row gap-3 md:gap-2">
+                              <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => onSelectContent("ximena-story")}
+                                className="ximena-story-button group/ximena-story relative flex-1 sm:min-h-16 md:min-h-12 px-2 sm:px-3 py-3 sm:py-4 md:py-2 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg overflow-hidden"
+                                style={{ borderColor: "#f34168" }}
+                              >
+                                <div
+                                  className="absolute inset-0 opacity-0 group-hover/ximena-story:opacity-10 transition-opacity duration-300"
+                                  style={{ backgroundColor: "#f34168" }}
+                                />
+                                <div
+                                  className="relative flex items-center justify-center gap-2"
+                                  style={{ color: "#f34168" }}
+                                >
+                                  <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current shrink-0" />
+                                  <span className="text-xs sm:text-base tracking-wide font-medium">
+                                    {t.viewXimenaStory}
+                                  </span>
+                                </div>
+                              </motion.button>
+
+                              <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={() => onSelectContent("cuerpo-humano")}
+                                className="human-body-button group/human-body relative flex-1 sm:min-h-16 md:min-h-12 px-2 sm:px-3 py-3 sm:py-4 md:py-2 rounded-2xl bg-white border-2 transition-all duration-300 hover:shadow-lg overflow-hidden"
+                                style={{ borderColor: "#ae54ef" }}
+                              >
+                                <div
+                                  className="absolute inset-0 opacity-0 group-hover/human-body:opacity-10 transition-opacity duration-300"
+                                  style={{ backgroundColor: "#ae54ef" }}
+                                />
+                                <div
+                                  className="relative flex items-center justify-center gap-2"
+                                  style={{ color: "#ae54ef" }}
+                                >
+                                  <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current shrink-0" />
+                                  <span className="text-xs sm:text-base tracking-wide font-medium">
+                                    {t.viewHumanBody}
+                                  </span>
+                                </div>
+                              </motion.button>
+                            </div>
+                          )}
+                        </>
                       )}
                     </div>
                   </div>

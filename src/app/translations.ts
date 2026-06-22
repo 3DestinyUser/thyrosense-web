@@ -21,7 +21,9 @@ export const translations = {
       badge: "EXPERIENCIAS INMERSIVAS",
       title: "Elige una experiencia",
       subtitle: "Selecciona el contenido que deseas explorar en 360°",
-      view360: "Ver en 360°",
+      view360: "Ver la historia completa en 360°",
+      viewXimenaStory: "Ver la vida de Ximena",
+      viewHumanBody: "Ver cuerpo humano",
       download: "Descargar video",
       tryFilter: "Probar Filtro",
       scanQR: "Escanear QR",
@@ -29,12 +31,13 @@ export const translations = {
         title: "La vida de Ximena",
         description: "Conoce una historia humana e inmersiva en formato 360°.",
         youtubeLink: "https://youtu.be/jeRZDaADM1o",
+        storyYoutubeLink: "https://youtu.be/kQomZx2qoLE",
+        humanBodyLink: "https://youtu.be/PheOp0ypmZo",
         downloadLink: ""
       },
       cuerpoHumano: {
         title: "El cuerpo humano",
         description: "Explora el cuerpo humano desde una perspectiva interactiva y educativa.",
-        youtubeLink: "",
         downloadLink: ""
       },
       instagramFilter: {
@@ -82,7 +85,9 @@ export const translations = {
       badge: "IMMERSIVE EXPERIENCES",
       title: "Choose an experience",
       subtitle: "Select the content you want to explore in 360°",
-      view360: "View in 360°",
+      view360: "View the full story in 360°",
+      viewXimenaStory: "View Ximena's story",
+      viewHumanBody: "View human body",
       download: "Download video",
       tryFilter: "Try Filter",
       scanQR: "Scan QR",
@@ -90,12 +95,13 @@ export const translations = {
         title: "Ximena's Story",
         description: "Discover a human and immersive story in 360° format.",
         youtubeLink: "https://youtu.be/4V-NCPrcDUI",
+        storyYoutubeLink: "https://youtu.be/5aS48fvcI3k",
+        humanBodyLink: "https://youtu.be/ZvP8DqNFOxs",
         downloadLink: ""
       },
       cuerpoHumano: {
         title: "The Human Body",
         description: "Explore the human body from an interactive and educational perspective.",
-        youtubeLink: "",
         downloadLink: ""
       },
       instagramFilter: {
@@ -143,7 +149,9 @@ export const translations = {
       badge: "EXPERIÊNCIAS IMERSIVAS",
       title: "Escolha uma experiência",
       subtitle: "Selecione o conteúdo que deseja explorar em 360°",
-      view360: "Ver em 360°",
+      view360: "Ver a história completa em 360°",
+      viewXimenaStory: "Ver a vida de Ximena",
+      viewHumanBody: "Ver corpo humano",
       download: "Baixar vídeo",
       tryFilter: "Experimentar Filtro",
       scanQR: "Escanear QR",
@@ -151,12 +159,13 @@ export const translations = {
         title: "A vida de Ximena",
         description: "Conheça uma história humana e imersiva em formato 360°.",
         youtubeLink: "https://youtu.be/4CcdN81CU3w",
+        storyYoutubeLink: "https://youtu.be/kvNp6-HKomE",
+        humanBodyLink: "https://youtu.be/-isF4i74lbM",
         downloadLink: ""
       },
       cuerpoHumano: {
         title: "O corpo humano",
         description: "Explore o corpo humano de uma perspectiva interativa e educacional.",
-        youtubeLink: "",
         downloadLink: ""
       },
       instagramFilter: {
