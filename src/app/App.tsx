@@ -10,6 +10,8 @@ import { getVideoYoutubeLink } from "./videoLinks";
 
 type AppState = "hero" | "language" | "content" | "instruction" | "video";
 
+/*Dummy change for PR*/
+
 function isMobileDevice() {
   const mobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     window.navigator.userAgent
