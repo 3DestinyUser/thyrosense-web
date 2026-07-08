@@ -6,8 +6,23 @@ import { ContentSelector } from "./components/ContentSelector";
 import { VideoInstructionModal } from "./components/VideoInstructionModal";
 import { Video360Player } from "./components/Video360Player";
 import { LanguageCode } from "./translations";
+import { getVideoYoutubeLink } from "./videoLinks";
 
 type AppState = "hero" | "language" | "content" | "instruction" | "video";
+
+function isMobileDevice() {
+  const mobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    window.navigator.userAgent
+  );
+  const iPadDesktopMode =
+    window.navigator.platform === "MacIntel" && window.navigator.maxTouchPoints > 1;
+
+  return (
+    mobileUserAgent ||
+    iPadDesktopMode ||
+    window.matchMedia("(max-width: 767px)").matches
+  );
+}
 
 export default function App() {
   const [currentState, setCurrentState] = useState<AppState>("language");
@@ -37,6 +52,11 @@ export default function App() {
   };
 
   const handleStartVideo = () => {
+    if (isMobileDevice()) {
+      window.location.assign(getVideoYoutubeLink(selectedContent, selectedLanguage));
+      return;
+    }
+
     setCurrentState("video");
   };
 

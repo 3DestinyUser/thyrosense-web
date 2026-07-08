@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Compass, Maximize2, Pause, Play, Volume2, VolumeX, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { translations, LanguageCode } from "../translations";
+import { getVideoYoutubeLink } from "../videoLinks";
 
 interface Video360PlayerProps {
   contentId: string;
@@ -126,12 +127,7 @@ export function Video360Player({ contentId, onClose, language }: Video360PlayerP
     contentId === "cuerpo-humano"
       ? t.contentSelector.cuerpoHumano
       : t.contentSelector.ximena;
-  const youtubeLink =
-    contentId === "ximena-story"
-      ? t.contentSelector.ximena.storyYoutubeLink
-      : contentId === "cuerpo-humano"
-      ? t.contentSelector.ximena.humanBodyLink
-      : t.contentSelector.ximena.youtubeLink;
+  const youtubeLink = getVideoYoutubeLink(contentId, language);
   const videoId = getYouTubeVideoId(youtubeLink);
 
   useEffect(() => {
