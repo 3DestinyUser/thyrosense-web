@@ -33,6 +33,7 @@ export const translations = {
         youtubeLink: "https://youtu.be/jeRZDaADM1o",
         storyYoutubeLink: "https://youtu.be/kQomZx2qoLE",
         humanBodyLink: "https://youtu.be/PheOp0ypmZo",
+        hostedVideoUrl: "https://dl.dropboxusercontent.com/scl/fi/hy1muqmxg7t03a1ww7rkf/Thyrosense360-Espa-ol.mp4?rlkey=ra9733pxfiud4yvw42vfbqann&st=mksfy28a&raw=1",
         downloadLink: ""
       },
       cuerpoHumano: {
@@ -60,7 +61,15 @@ export const translations = {
       start: "Comenzar experiencia"
     },
     videoPlayer: {
-      helpText: "Arrastra para explorar 360° • Usa los controles para reproducir"
+      helpText: "Arrastra para explorar 360° • Usa los controles para reproducir",
+      hosted: {
+        loading: "Cargando reproductor 360...",
+        startHint: "Toca comenzar para reproducir el video dentro de la página. Si el permiso de movimiento no está disponible, puedes explorar arrastrando con el dedo.",
+        urlMissing: "No hay una URL de video autoalojado configurada para este contenido.",
+        loadError: "No se pudo cargar o reproducir el archivo de video.",
+        initError: "No se pudo inicializar el reproductor 360.",
+        playbackRejected: "El navegador rechazó la reproducción del video."
+      }
     },
     footer: {
       code: "RL-NONT-00044",
@@ -124,7 +133,15 @@ export const translations = {
       start: "Start experience"
     },
     videoPlayer: {
-      helpText: "Drag to explore 360° • Use controls to play"
+      helpText: "Drag to explore 360° • Use controls to play",
+      hosted: {
+        loading: "Loading 360 player...",
+        startHint: "Tap start to play the video within the page. If motion permission is not available, you can explore by dragging with your finger.",
+        urlMissing: "No self-hosted video URL is configured for this content.",
+        loadError: "The video file could not be loaded or played.",
+        initError: "The 360 player could not be initialized.",
+        playbackRejected: "The browser rejected video playback."
+      }
     },
     footer: {
       code: "RL-NONT-00045, Mar/26",
@@ -188,7 +205,15 @@ export const translations = {
       start: "Começar experiência"
     },
     videoPlayer: {
-      helpText: "Arraste para explorar 360° • Use os controles para reproduzir"
+      helpText: "Arraste para explorar 360° • Use os controles para reproduzir",
+      hosted: {
+        loading: "Carregando reprodutor 360...",
+        startHint: "Toque em começar para reproduzir o vídeo dentro da página. Se a permissão de movimento não estiver disponível, você pode explorar arrastando com o dedo.",
+        urlMissing: "Não há uma URL de vídeo auto-hospedado configurada para este conteúdo.",
+        loadError: "Não foi possível carregar ou reproduzir o arquivo de vídeo.",
+        initError: "Não foi possível inicializar o reprodutor 360.",
+        playbackRejected: "O navegador rejeitou a reprodução do vídeo."
+      }
     },
     footer: {
       code: "RL-NONT-00043, Mar/26, Script BR-NONT-00013, , Fev 26",

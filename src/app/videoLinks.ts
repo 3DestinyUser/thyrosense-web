@@ -1,7 +1,5 @@
 import { translations, LanguageCode } from "./translations";
 
-/*Dummy change for PR*/
-
 export function getVideoYoutubeLink(contentId: string, language: LanguageCode) {
   const t = translations[language].contentSelector.ximena;
 
@@ -14,4 +12,18 @@ export function getVideoYoutubeLink(contentId: string, language: LanguageCode) {
   }
 
   return t.youtubeLink;
+}
+
+export function getHostedVideoUrl(contentId: string, language: LanguageCode) {
+  const t = translations[language].contentSelector.ximena;
+
+  if (contentId === "cuerpo-humano") {
+    return undefined;
+  }
+
+  if (contentId === "ximena") {
+    return "hostedVideoUrl" in t ? t.hostedVideoUrl : undefined;
+  }
+
+  return undefined;
 }
