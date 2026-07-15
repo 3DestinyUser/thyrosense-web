@@ -5,12 +5,11 @@ import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { ContentSelector } from "./components/ContentSelector";
 import { VideoInstructionModal } from "./components/VideoInstructionModal";
 import { Video360Player } from "./components/Video360Player";
+import { Hosted360Player } from "./components/Hosted360Player";
 import { LanguageCode } from "./translations";
-import { getVideoYoutubeLink } from "./videoLinks";
+import { getHostedVideoUrl } from "./videoLinks";
 
 type AppState = "hero" | "language" | "content" | "instruction" | "video";
-
-/*Dummy change for PR*/
 
 function isMobileDevice() {
   const mobileUserAgent = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -54,11 +53,6 @@ export default function App() {
   };
 
   const handleStartVideo = () => {
-    if (isMobileDevice()) {
-      window.location.assign(getVideoYoutubeLink(selectedContent, selectedLanguage));
-      return;
-    }
-
     setCurrentState("video");
   };
 
@@ -101,11 +95,20 @@ export default function App() {
       )}
 
       {currentState === "video" && (
-        <Video360Player
-          contentId={selectedContent}
-          onClose={handleCloseVideo}
-          language={selectedLanguage}
-        />
+        isMobileDevice() ? (
+          <Hosted360Player
+            contentId={selectedContent}
+            hostedVideoUrl={getHostedVideoUrl(selectedContent, selectedLanguage)}
+            onClose={handleCloseVideo}
+            language={selectedLanguage}
+          />
+        ) : (
+          <Video360Player
+            contentId={selectedContent}
+            onClose={handleCloseVideo}
+            language={selectedLanguage}
+          />
+        )
       )}
     </div>
   );

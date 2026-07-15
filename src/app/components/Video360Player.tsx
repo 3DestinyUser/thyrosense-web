@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import { translations, LanguageCode } from "../translations";
 import { getVideoYoutubeLink } from "../videoLinks";
 
-/*Dummy change for PR*/
-
 interface Video360PlayerProps {
   contentId: string;
   onClose: () => void;
@@ -403,7 +401,7 @@ export function Video360Player({ contentId, onClose, language }: Video360PlayerP
               {video.title}
             </h2>
             <span className="rounded-full bg-violet-600 px-2 py-0.5 text-xs text-white sm:px-3 sm:py-1 sm:text-sm">
-              360Â°
+              360°
             </span>
           </div>
 
