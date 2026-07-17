@@ -33,7 +33,7 @@ export const translations = {
         youtubeLink: "https://youtu.be/jeRZDaADM1o",
         storyYoutubeLink: "https://youtu.be/kQomZx2qoLE",
         humanBodyLink: "https://youtu.be/PheOp0ypmZo",
-        hostedVideoUrl: "https://www.dropbox.com/scl/fi/4sa45f5dcos87y2gkuev1/Thyrosense360-Espa-ol-Injected.mp4?rlkey=8dgty92e1mhgtb4yg4pqtwgm3&st=n54aozyd&dl=0",
+        hostedVideoUrl: "https://www.dropbox.com/scl/fi/4sa45f5dcos87y2gkuev1/Thyrosense360-Espa-ol-Injected.mp4?rlkey=8dgty92e1mhgtb4yg4pqtwgm3&st=n54aozyd&raw=1",
         downloadLink: ""
       },
       cuerpoHumano: {
@@ -106,7 +106,7 @@ export const translations = {
         youtubeLink: "https://youtu.be/4V-NCPrcDUI",
         storyYoutubeLink: "https://youtu.be/5aS48fvcI3k",
         humanBodyLink: "https://youtu.be/ZvP8DqNFOxs",
-        hostedVideoUrl: "https://www.dropbox.com/scl/fi/zziwpjc57vx4phja3tdcf/Thyrosense360-Ingles-Injected.mp4?rlkey=mje96nm4r08ya39bwywtxe3e7&st=idjttuwl&dl=0",
+        hostedVideoUrl: "https://www.dropbox.com/scl/fi/zziwpjc57vx4phja3tdcf/Thyrosense360-Ingles-Injected.mp4?rlkey=mje96nm4r08ya39bwywtxe3e7&st=idjttuwl&raw=1",
         downloadLink: ""
       },
       cuerpoHumano: {
