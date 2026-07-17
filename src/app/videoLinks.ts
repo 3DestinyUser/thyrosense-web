@@ -17,12 +17,16 @@ export function getVideoYoutubeLink(contentId: string, language: LanguageCode) {
 export function getHostedVideoUrl(contentId: string, language: LanguageCode) {
   const t = translations[language].contentSelector.ximena;
 
+  if (contentId === "ximena-story") {
+    return t.storyHostedVideoUrl || undefined;
+  }
+
   if (contentId === "cuerpo-humano") {
-    return undefined;
+    return t.humanBodyHostedVideoUrl || undefined;
   }
 
   if (contentId === "ximena") {
-    return "hostedVideoUrl" in t ? t.hostedVideoUrl : undefined;
+    return t.hostedVideoUrl || undefined;
   }
 
   return undefined;
