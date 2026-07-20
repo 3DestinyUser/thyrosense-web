@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Play } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { translations, LanguageCode } from "../translations";
 import imgXimena from "../../imports/Container__2_.png";
 import imgTercera from "../../imports/Container-3.png";
@@ -12,8 +12,11 @@ interface ContentSelectorProps {
   language: LanguageCode;
 }
 
+const qrModalHistoryStateKey = "thyrosenseQrModal";
+
 export function ContentSelector({ onSelectContent, language }: ContentSelectorProps) {
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
+  const hasQrModalHistoryEntryRef = useRef(false);
   const t = translations[language].contentSelector;
 
   const contents = [
@@ -38,6 +41,50 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
   const handleOpenFilter = () => {
     window.open(t.instagramFilter.pageLink, "_blank", "noopener,noreferrer");
   };
+
+  const handleCloseQrModal = () => {
+    if (hasQrModalHistoryEntryRef.current) {
+      window.history.back();
+      return;
+    }
+
+    setIsQrModalOpen(false);
+  };
+
+  useEffect(() => {
+    if (!isQrModalOpen) {
+      return undefined;
+    }
+
+    const currentHistoryState = window.history.state;
+    const nextHistoryState =
+      typeof currentHistoryState === "object" && currentHistoryState !== null
+        ? { ...currentHistoryState, [qrModalHistoryStateKey]: true }
+        : { [qrModalHistoryStateKey]: true };
+
+    if (
+      typeof currentHistoryState === "object" &&
+      currentHistoryState !== null &&
+      currentHistoryState[qrModalHistoryStateKey] === true
+    ) {
+      window.history.replaceState(nextHistoryState, "", window.location.href);
+    } else {
+      window.history.pushState(nextHistoryState, "", window.location.href);
+    }
+
+    hasQrModalHistoryEntryRef.current = true;
+
+    const handlePopState = () => {
+      hasQrModalHistoryEntryRef.current = false;
+      setIsQrModalOpen(false);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [isQrModalOpen]);
 
   return (
     <div className="min-h-screen w-full flex flex-col bg-gradient-to-br from-gray-50 via-white to-violet-50 pt-12 sm:pt-16 md:pt-8 lg:pt-6 px-4 sm:px-2">
@@ -251,7 +298,7 @@ export function ContentSelector({ onSelectContent, language }: ContentSelectorPr
 
       <QrCodeModal
         isOpen={isQrModalOpen}
-        onClose={() => setIsQrModalOpen(false)}
+        onClose={handleCloseQrModal}
         qrImage={t.instagramFilter.qrImage}
         language={language}
       />
