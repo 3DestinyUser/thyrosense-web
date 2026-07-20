@@ -184,8 +184,8 @@ export const translations = {
         storyYoutubeLink: "https://youtu.be/kvNp6-HKomE",
         humanBodyLink: "https://youtu.be/-isF4i74lbM",
         hostedVideoUrl: "https://dl.dropboxusercontent.com/scl/fo/mi53rtq2f53sod35topng/APaimGaZIF8l70WF2CApuT8/Thyrosense360%20-%20Portugues%20Injected.mp4?rlkey=eqatjd9s1p038un41vo3vqlh2&e=1&raw=1",
-        storyHostedVideoUrl: "https://dl.dropboxusercontent.com//scl/fo/mi53rtq2f53sod35topng/AEd62K7AQbpg_HZ93ehODCI/Portugu%C3%A9s%20Parte%201%20Injected.mp4?rlkey=eqatjd9s1p038un41vo3vqlh2&e=1&raw=1",
-        humanBodyHostedVideoUrl: "https://dl.dropboxusercontent.com/scl/fo/mi53rtq2f53sod35topng/AKgCl-akopzNvQ23_QSRO64/Portugu%C3%A9s%20Parte%202%20Injected.mp4?rlkey=eqatjd9s1p038un41vo3vqlh2&e=1&raw=1",
+        storyHostedVideoUrl: "https://dl.dropboxusercontent.com/scl/fo/mi53rtq2f53sod35topng/ACB5_7ZLSDRq-o-MVByj_6U/Portugues%20Parte%201_injected.mp4?rlkey=eqatjd9s1p038un41vo3vqlh2&e=1&raw=1",
+        humanBodyHostedVideoUrl: "https://dl.dropboxusercontent.com/scl/fo/mi53rtq2f53sod35topng/ADDwXEzLxFOxDyo-J5qK4qc/Portugues%20Parte%202_injected.mp4?rlkey=eqatjd9s1p038un41vo3vqlh2&e=1&raw=1",
         downloadLink: ""
       },
       cuerpoHumano: {
