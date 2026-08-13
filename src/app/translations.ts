@@ -149,11 +149,11 @@ export const translations = {
       }
     },
     footer: {
-      code: "RL-NONT-00045, Mar/26",
-      line1: "This application and its content are exclusively for healthcare professionals licensed to prescribe prescription drugs.",
-      line2: "Total or partial reproduction without prior express consent of Merck.",
+      code: "GL-NONT-00227; August 2026.",
+      line1: "",
+      line2: "",
       address: "",
-      rights: "[2026] MERCK KGaA || ® All rights reserved."
+      rights: "©2026 Merck KGaA, Darmstadt, Germany and/or its affiliates. All rights reserved."
     }
   },
   pt: {
